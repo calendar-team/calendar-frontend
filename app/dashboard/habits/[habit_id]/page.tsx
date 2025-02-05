@@ -1,4 +1,5 @@
 "use client";
+import { use } from "react";
 
 import { Button } from "@/components/ui/button";
 import useSWR, { useSWRConfig, Fetcher } from "swr";
@@ -28,7 +29,8 @@ const fetcher: Fetcher<HabitDetails, [string, string]> = ([url, token]) =>
     res.json(),
   );
 
-export default function Page({ params }: { params: { habit_id: string } }) {
+export default function Page(props: { params: Promise<{ habit_id: string }> }) {
+  const params = use(props.params);
   const router = useRouter();
   const { mutate: globalMutate } = useSWRConfig();
   const { data: session } = useSession();

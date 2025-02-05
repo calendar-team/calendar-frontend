@@ -1,4 +1,5 @@
 "use client";
+import { use } from "react";
 
 import { TodoSidebar } from "@/components/todo-sidebar";
 import {
@@ -14,7 +15,8 @@ import { format, parse } from "date-fns";
 import Link from "next/link";
 import TasksList from "../tasks-list";
 
-export default function Page({ params }: { params: { date: string } }) {
+export default function Page(props: { params: Promise<{ date: string }> }) {
+  const params = use(props.params);
   const date = parse(params.date, "dd-MM-yyyy", new Date());
   const today = new Date();
   today.setHours(0, 0, 0, 0);

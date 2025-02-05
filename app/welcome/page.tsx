@@ -6,11 +6,10 @@ import img3 from "./coding.svg";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-export default function WelcomePage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | undefined };
+export default async function WelcomePage(props: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
+  const searchParams = await props.searchParams;
   return (
     <div className="flex flex-col xl:flex-row h-full">
       <div className="flex flex-col mb-16 md:mb-0 md:basis-1/2 xl:basis-full">
