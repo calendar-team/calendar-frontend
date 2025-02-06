@@ -98,6 +98,7 @@ const config = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
+    "lucide-react": require.resolve("lucide-react"),
     "^@/(.*)$": "<rootDir>/$1",
   },
 
