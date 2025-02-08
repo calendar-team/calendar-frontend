@@ -2,6 +2,20 @@ import { useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { EmptyFunction, Task } from "../../types";
 import { useSession } from "next-auth/react";
+import {
+  AlignVerticalJustifyCenter,
+  CircleX,
+  EllipsisVertical,
+} from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 const tickVariants = {
   pressed: (isChecked: boolean) => ({ pathLength: isChecked ? 0.85 : 0.2 }),
@@ -93,7 +107,7 @@ export default function TaskWithCheckbox({
           initial={false}
         />
       </motion.svg>
-      <div className="flex w-full truncate">
+      <div className="flex grow truncate">
         <div className="flex truncate relative [--checked-label-color:hsl(var(--primary))] [--unchecked-label-color:hsl(var(--foreground))]">
           <motion.label
             className="flex mx-1 truncate text-2xl font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -120,10 +134,30 @@ export default function TaskWithCheckbox({
           />
         </div>
       </div>
+      <div className="flex flex-row items-center">
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <EllipsisVertical />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={() => {
+                setIsChecked(true);
+                changeState(task, "Cancelled");
+              }}
+            >
+              <CircleX />
+              Cancel
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </div>
   );
 
-  function changeState(task: Task, state: "Done" | "Pending") {
+  function changeState(task: Task, state: "Done" | "Pending" | "Cancelled") {
     task.state = "Done";
     fetch(process.env.NEXT_PUBLIC_CALENDAR_BACKEND_URL + "/tasks/" + task.id, {
       method: "PUT",
