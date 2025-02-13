@@ -16,7 +16,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "22.13.1",
+    "@types/node": "22.13.2",
     "@types/react": "19.0.8",
     "@types/react-calendar-heatmap": "^1.9.0",
     "autoprefixer": "^10.4.20",
@@ -25,7 +25,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.4.3",
     "postcss": "^8.5.2",
-    "prettier": "^3.5.0",
+    "prettier": "^3.5.1",
     "tailwindcss": "^3.4.15",
     "typescript": "5.7.3"
   },
