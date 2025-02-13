@@ -30,7 +30,7 @@
     "typescript": "5.7.3"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.10.0",
+    "@hookform/resolvers": "^4.0.0",
     "@lexical/code": "^0.24.0",
     "@lexical/link": "^0.24.0",
     "@lexical/list": "^0.24.0",
