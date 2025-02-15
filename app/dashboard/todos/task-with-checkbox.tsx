@@ -11,6 +11,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+import { format } from "date-fns";
 
 const tickVariants = {
   pressed: (taskState: "Done" | "Cancelled" | "Pending") => ({
@@ -73,7 +75,10 @@ export default function TaskWithCheckbox({
   const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1]);
 
   return (
-    <div className="flex flex-row w-full border rounded-md p-2">
+    <Link
+      href={`/dashboard/todos/${format(task.due_on, "dd-MM-yyyy")}/tasks/${task.id}`}
+      className="flex flex-row w-full border rounded-md p-2 hover:bg-secondary hover:cursor-pointer"
+    >
       <motion.svg
         xmlns="http://www.w3.org/2000/svg"
         width="30"
@@ -84,11 +89,12 @@ export default function TaskWithCheckbox({
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="cursor-pointer w-[30px]"
-        onClick={() => {
+        className="group cursor-pointer w-[30px]"
+        onClick={(e) => {
           const newState = taskState === "Pending" ? "Done" : "Pending";
           setTaskState(newState);
           changeState(task, newState);
+          e.preventDefault();
         }}
         initial={false}
         animate={taskState}
@@ -103,7 +109,7 @@ export default function TaskWithCheckbox({
           rx="2"
           variants={boxVariants}
           initial={false}
-          className="[--done-fill-color:hsl(var(--input))] [--cancelled-fill-color:hsl(var(--input))] [--pending-fill-color:#00000000]"
+          className="[--done-fill-color:hsl(var(--input))] [--cancelled-fill-color:hsl(var(--input))] [--pending-fill-color:#00000000] group-hover:fill-background"
         />
         <motion.path
           d="M 6.66666 12.6667 L 9.99999 16 L 17.3333 8.66669"
@@ -139,8 +145,7 @@ export default function TaskWithCheckbox({
       <div className="flex grow truncate">
         <div className="flex truncate relative [--done-label-color:hsl(var(--primary))] [--cancelled-label-color:hsl(var(--primary))] [--pending-label-color:hsl(var(--foreground))]">
           <motion.label
-            className="flex mx-1 truncate text-2xl font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            htmlFor={task.id}
+            className="flex mx-1 text-2xl"
             variants={labelVariants}
             animate={taskState}
             transition={{
@@ -149,7 +154,7 @@ export default function TaskWithCheckbox({
             }}
             initial={false}
           >
-            <p className="truncate">{task.name}</p>
+            <p className="truncate hover:cursor-pointer">{task.name}</p>
           </motion.label>
           <motion.div
             className="absolute top-1/2 h-0.5"
@@ -168,7 +173,7 @@ export default function TaskWithCheckbox({
           <DropdownMenuTrigger>
             <EllipsisVertical />
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent onClick={(e) => e.preventDefault()}>
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
@@ -184,7 +189,7 @@ export default function TaskWithCheckbox({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-    </div>
+    </Link>
   );
 
   function changeState(task: Task, state: "Done" | "Pending" | "Cancelled") {
