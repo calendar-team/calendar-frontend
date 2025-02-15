@@ -158,3 +158,7 @@ export const TaskSchema = z.object({
 export const TaskArraySchema = z.array(TaskSchema);
 
 export type Task = z.infer<typeof TaskSchema>;
+
+export const TaskDetailsSchema = TaskSchema.extend({ description: z.string() });
+
+export type TaskDetails = z.infer<typeof TaskDetailsSchema>;

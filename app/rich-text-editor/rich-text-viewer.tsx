@@ -1,7 +1,7 @@
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
-import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { EditorRefPlugin } from "@lexical/react/LexicalEditorRefPlugin";
@@ -9,11 +9,14 @@ import RichTextEditorConfig from "./config";
 import { useEffect, useRef } from "react";
 import { LexicalEditor } from "lexical";
 import { EMPTY_DESCRIPTION } from "../types";
+import { cn } from "@/lib/utils";
 
 export default function RichTextViewer({
   editorState,
+  className,
 }: {
   editorState: string;
+  className?: string;
 }) {
   const editorRef = useRef<LexicalEditor>(null);
 
@@ -36,10 +39,10 @@ export default function RichTextViewer({
       <RichTextPlugin
         contentEditable={
           <ContentEditable
-            className={
-              "outline-none py-[15px] px-2.5 overflow-hidden text-ellipsis border rounded-md " +
-              (editorState === EMPTY_DESCRIPTION ? "hidden " : "")
-            }
+            className={cn(
+              `outline-none py-[15px] px-2.5 overflow-hidden text-ellipsis border rounded-md ${editorState === EMPTY_DESCRIPTION ? "hidden " : ""}`,
+              className,
+            )}
           />
         }
         placeholder={() => null}
