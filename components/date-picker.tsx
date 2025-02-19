@@ -13,7 +13,7 @@ import {
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 
-export function DatePicker({ date }: { date: Date }) {
+export function DatePicker({ date }: { date?: Date }) {
   const router = useRouter();
 
   return (
@@ -33,7 +33,6 @@ export function DatePicker({ date }: { date: Date }) {
         <PopoverContent side="right" align="start">
           <Calendar
             className="[&_[role=gridcell].bg-accent]:bg-sidebar-primary [&_[role=gridcell].bg-accent]:text-sidebar-primary-foreground [&_[role=gridcell]]:w-[33px]"
-            required
             mode="single"
             selected={date}
             onSelect={(newDate) => {
@@ -46,7 +45,6 @@ export function DatePicker({ date }: { date: Date }) {
       </Popover>
       <Calendar
         className="group-data-[collapsible=icon]:hidden [&_[role=gridcell].bg-accent]:bg-sidebar-primary [&_[role=gridcell].bg-accent]:text-sidebar-primary-foreground [&_[role=gridcell]]:w-[33px]"
-        required={true}
         mode="single"
         selected={date}
         onSelect={(newDate) => {

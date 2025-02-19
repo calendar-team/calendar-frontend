@@ -65,9 +65,11 @@ const lineVariants = {
 export default function TaskWithCheckbox({
   task,
   onTaskStateChange,
+  pauseAfter = 0,
 }: {
   task: Task;
   onTaskStateChange: EmptyFunction;
+  pauseAfter?: number;
 }) {
   const { data: session } = useSession();
   const [taskState, setTaskState] = useState(task.state);
@@ -193,7 +195,6 @@ export default function TaskWithCheckbox({
   );
 
   function changeState(task: Task, state: "Done" | "Pending" | "Cancelled") {
-    task.state = "Done";
     fetch(process.env.NEXT_PUBLIC_CALENDAR_BACKEND_URL + "/tasks/" + task.id, {
       method: "PUT",
       headers: {
@@ -217,7 +218,7 @@ export default function TaskWithCheckbox({
               );
       })
       .then(() => {
-        onTaskStateChange();
+        setTimeout(onTaskStateChange, pauseAfter);
       })
       .catch((reason) => {
         alert(`Error: ${reason}`);
