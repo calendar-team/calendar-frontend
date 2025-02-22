@@ -30,9 +30,8 @@ export function DatePicker({ date }: { date?: Date }) {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </PopoverTrigger>
-        <PopoverContent side="right" align="start">
+        <PopoverContent side="right" align="start" className="p-0 w-[276px]">
           <Calendar
-            className="[&_[role=gridcell].bg-accent]:bg-sidebar-primary [&_[role=gridcell].bg-accent]:text-sidebar-primary-foreground [&_[role=gridcell]]:w-[33px]"
             mode="single"
             selected={date}
             onSelect={(newDate) => {
@@ -44,7 +43,7 @@ export function DatePicker({ date }: { date?: Date }) {
         </PopoverContent>
       </Popover>
       <Calendar
-        className="group-data-[collapsible=icon]:hidden [&_[role=gridcell].bg-accent]:bg-sidebar-primary [&_[role=gridcell].bg-accent]:text-sidebar-primary-foreground [&_[role=gridcell]]:w-[33px]"
+        className="group-data-[collapsible=icon]:hidden"
         mode="single"
         selected={date}
         onSelect={(newDate) => {
