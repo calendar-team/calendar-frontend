@@ -35,7 +35,9 @@ const formSchema = z.object({
 export default function Signup() {
   const { status: sessionStatus } = useSession();
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const form = useForm<z.infer<typeof formSchema> & { serverError: string }>({
+  const form = useForm<
+    z.infer<typeof formSchema> & Partial<{ serverError: string }>
+  >({
     mode: "all",
     resolver: zodResolver(formSchema),
     defaultValues: {

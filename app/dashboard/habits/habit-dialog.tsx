@@ -50,7 +50,9 @@ export default function HabitDialog({
   const [habitDescription, setHabitDescription] = useState(
     defaultHabitDescription,
   );
-  const form = useForm<z.infer<typeof formSchema> & { serverError: string }>({
+  const form = useForm<
+    z.infer<typeof formSchema> & Partial<{ serverError: string }>
+  >({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: defaultHabitName,
