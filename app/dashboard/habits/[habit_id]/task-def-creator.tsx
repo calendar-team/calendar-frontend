@@ -63,43 +63,43 @@ export default function TaskDefCreator({
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const form = useForm<z.infer<typeof TaskDefSchema> & { serverError: string }>(
-    {
-      resolver: zodResolver(TaskDefSchema),
-      defaultValues: {
-        name: "",
-        description: EMPTY_DESCRIPTION,
-        recurrence: {
-          rec_type: "Days",
-          days: {
-            every: 1,
-            from: today,
-          },
-          weeks: {
-            every: 1,
-            from: today,
-            on: {
-              days: [WeekDaysValues[today.getDay()]],
-            },
-          },
-          months: {
-            every: 1,
-            from: today,
-            on: {
-              days: [today.getDate()],
-            },
-          },
-          years: {
-            every: 1,
-            from: today,
+  const form = useForm<
+    z.infer<typeof TaskDefSchema> & Partial<{ serverError: string }>
+  >({
+    resolver: zodResolver(TaskDefSchema),
+    defaultValues: {
+      name: "",
+      description: EMPTY_DESCRIPTION,
+      recurrence: {
+        rec_type: "Days",
+        days: {
+          every: 1,
+          from: today,
+        },
+        weeks: {
+          every: 1,
+          from: today,
+          on: {
+            days: [WeekDaysValues[today.getDay()]],
           },
         },
-        ends_on: {
-          type: EndVariants.Never,
+        months: {
+          every: 1,
+          from: today,
+          on: {
+            days: [today.getDate()],
+          },
+        },
+        years: {
+          every: 1,
+          from: today,
         },
       },
+      ends_on: {
+        type: EndVariants.Never,
+      },
     },
-  );
+  });
   const { watch } = form;
 
   function onSubmit(task: TaskDef) {
