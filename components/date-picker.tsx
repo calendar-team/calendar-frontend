@@ -26,7 +26,6 @@ export function DatePicker({ date }: { date?: Date }) {
           <SidebarMenuItem>
             <SidebarMenuButton tooltip="Calendar">
               <CalendarIcon />
-              <span>test</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </PopoverTrigger>
