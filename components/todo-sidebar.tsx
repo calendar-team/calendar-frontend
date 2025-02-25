@@ -26,7 +26,6 @@ export function TodoSidebar({ date }: { date?: Date }) {
             </Link>
           </SidebarMenuButton>
           <SidebarMenuButton
-            tooltip="All pending tasks"
             className="mx-3 group-data-[collapsible=icon]:hidden"
             isActive={pathname === "/dashboard/todos/all"}
           >
