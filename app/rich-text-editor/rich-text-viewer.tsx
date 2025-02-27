@@ -40,7 +40,7 @@ export default function RichTextViewer({
         contentEditable={
           <ContentEditable
             className={cn(
-              `outline-none py-[15px] px-2.5 overflow-hidden text-ellipsis border rounded-md ${editorState === EMPTY_DESCRIPTION ? "hidden " : ""}`,
+              `outline-hidden py-[15px] px-2.5 overflow-hidden text-ellipsis border rounded-md ${editorState === EMPTY_DESCRIPTION ? "hidden " : ""}`,
               className,
             )}
           />
