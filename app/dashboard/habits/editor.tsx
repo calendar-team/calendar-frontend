@@ -30,7 +30,7 @@ export default function HabitEditor({
     >
       <DialogTrigger asChild>
         <Button variant="outline">
-          <SquarePen className="h-4 w-4" />
+          <SquarePen className="size-4" />
           <div className="ml-1">Edit Habit</div>
         </Button>
       </DialogTrigger>

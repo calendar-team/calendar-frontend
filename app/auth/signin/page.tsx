@@ -89,7 +89,7 @@ export default function Signin() {
 
   return (
     <div className="grid place-items-center h-full">
-      <Card className="w-full max-w-[380px] border-0 sm:border shadow-none sm:shadow-sm">
+      <Card className="w-full max-w-[380px] border-0 sm:border shadow-none sm:shadow-xs">
         <CardHeader className="p-0 sm:p-6">
           <CardTitle className="text-center">Sign in</CardTitle>
         </CardHeader>

@@ -34,7 +34,7 @@ export default function RichTextEditor({
     <LexicalComposer initialConfig={editorConfig}>
       <RichTextPlugin
         contentEditable={
-          <ContentEditable className="min-h-32 outline-none py-[15px] px-2.5 border rounded-md focus-visible:ring-offset-2 focus-visible:ring-2 focus-visible:ring-ring" />
+          <ContentEditable className="min-h-32 outline-hidden py-[15px] px-2.5 border rounded-md focus-visible:ring-offset-2 focus-visible:ring-2 focus-visible:ring-ring" />
         }
         placeholder={
           <div className="absolute top-[15px] left-[10px] pointer-events-none select-none">

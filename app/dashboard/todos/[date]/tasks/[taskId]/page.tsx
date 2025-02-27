@@ -55,7 +55,7 @@ export default function Page(props: {
     <>
       <TodoSidebar date={date} />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
@@ -90,7 +90,7 @@ export default function Page(props: {
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex w-full h-full justify-center">
+        <div className="flex size-full justify-center">
           <div className="flex flex-col w-[920px] space-y-4">
             <div className="text-4xl">{task!.name}</div>
             <Separator />

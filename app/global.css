@@ -1,144 +1,227 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-.react-calendar-heatmap .color-scale-0 {
-  fill: #f6ffca;
-}
-.react-calendar-heatmap .color-scale-1 {
-  fill: #d6e685;
-}
-.react-calendar-heatmap .color-scale-2 {
-  fill: #8cc665;
-}
-.react-calendar-heatmap .color-scale-3 {
-  fill: #44a340;
-}
-.react-calendar-heatmap .color-scale-4 {
-  fill: #1e6823;
-}
+@custom-variant dark (&:is(.dark *));
 
-.react-calendar-heatmap .today-border {
-  stroke-width: 0.5px;
-  stroke: rgb(156 163 175);
-}
+@theme inline {
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
-.react-calendar-heatmap .color-empty1 {
-  fill: hsl(var(--accent));
-}
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
 
-@layer base {
-  :root {
-    --background: 220, 16%, 96%;
-    --foreground: 222, 20%, 16%;
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
 
-    --muted: 215, 14%, 80%;
-    --muted-foreground: 222, 20%, 16%;
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
 
-    --popover: 220, 16%, 96%;
-    --popover-foreground: 222, 20%, 16%;
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
-    --border: 222, 20%, 70%;
-    --input: 222, 20%, 70%;
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
-    --card: 220, 16%, 96%;
-    --card-foreground: 222, 20%, 16%;
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
 
-    --primary: 222, 20%, 70%;
-    --primary-foreground: 220, 16%, 96%;
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 
-    --secondary: 215, 14%, 80%;
-    --secondary-foreground: 222, 20%, 16%;
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
-    --accent: 215, 14%, 80%;
-    --accent-foreground: 222, 20%, 16%;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-rotate: rotate 2s linear infinite;
 
-    --destructive: 0, 80%, 50%;
-    --destructive-foreground: 222, 20%, 16%;
-
-    --ring: 222, 20%, 70%;
-
-    --radius: 0.5rem;
-
-    --beam: 191.03, 100%, 30%;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
-
-  .dark {
-    --background: 220, 16%, 16%;
-    --foreground: 222, 20%, 96%;
-
-    --muted: 215, 14%, 25%;
-    --muted-foreground: 222, 20%, 96%;
-
-    --popover: 220, 16%, 16%;
-    --popover-foreground: 222, 20%, 96%;
-
-    --border: 213.33, 11.69%, 30.2%;
-    --input: 213.33, 11.69%, 30.2%;
-
-    --card: 220, 16%, 16%;
-    --card-foreground: 222, 20%, 96%;
-
-    --primary: 222, 20%, 65%;
-    --primary-foreground: 220, 16%, 16%;
-
-    --secondary: 215, 14%, 25%;
-    --secondary-foreground: 222, 20%, 96%;
-
-    --accent: 215, 14%, 25%;
-    --accent-foreground: 222, 20%, 96%;
-
-    --destructive: 0, 80%, 50%;
-    --destructive-foreground: 222, 20%, 96%;
-
-    --ring: 222, 20%, 40%;
-
-    --radius: 0.5rem;
-
-    --beam: 191.03, 100%, 82.94%;
-
-    --sidebar-background: 240 5.9% 10%;
-
-    --sidebar-foreground: 240 4.8% 95.9%;
-
-    --sidebar-primary: 224.3 76.3% 48%;
-
-    --sidebar-primary-foreground: 0 0% 100%;
-
-    --sidebar-accent: 240 3.7% 15.9%;
-
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-
-    --sidebar-border: 240 3.7% 15.9%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
   }
 }
 
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 @layer base {
-  * {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
   }
+}
+
+@layer utilities {
+  .react-calendar-heatmap .color-scale-0 {
+    fill: #f6ffca;
+  }
+  .react-calendar-heatmap .color-scale-1 {
+    fill: #d6e685;
+  }
+  .react-calendar-heatmap .color-scale-2 {
+    fill: #8cc665;
+  }
+  .react-calendar-heatmap .color-scale-3 {
+    fill: #44a340;
+  }
+  .react-calendar-heatmap .color-scale-4 {
+    fill: #1e6823;
+  }
+
+  .react-calendar-heatmap .today-border {
+    stroke-width: 0.5px;
+    stroke: rgb(156 163 175);
+  }
+
+  .react-calendar-heatmap .color-empty1 {
+    fill: var(--accent);
+  }
+}
+
+:root {
+  --background: hsl(220, 16%, 96%);
+  --foreground: hsl(222, 20%, 16%);
+
+  --muted: hsl(215, 14%, 80%);
+  --muted-foreground: hsl(222, 20%, 16%);
+
+  --popover: hsl(220, 16%, 96%);
+  --popover-foreground: hsl(222, 20%, 16%);
+
+  --border: hsl(222, 20%, 70%);
+  --input: hsl(222, 20%, 70%);
+
+  --card: hsl(220, 16%, 96%);
+  --card-foreground: hsl(222, 20%, 16%);
+
+  --primary: hsl(222, 20%, 70%);
+  --primary-foreground: hsl(220, 16%, 96%);
+
+  --secondary: hsl(215, 14%, 80%);
+  --secondary-foreground: hsl(222, 20%, 16%);
+
+  --accent: hsl(215, 14%, 80%);
+  --accent-foreground: hsl(222, 20%, 16%);
+
+  --destructive: hsl(0, 80%, 50%);
+  --destructive-foreground: hsl(222, 20%, 16%);
+
+  --ring: hsl(222, 20%, 70%);
+
+  --radius: 0.5rem;
+
+  --beam: hsl(191.03, 100%, 30%);
+
+  --sidebar-background: hsl(0 0% 98%);
+
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+
+  --sidebar-primary: hsl(240 5.9% 10%);
+
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+
+  --sidebar-border: hsl(220 13% 91%);
+
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+.dark {
+  --background: hsl(220, 16%, 16%);
+  --foreground: hsl(222, 20%, 96%);
+
+  --muted: hsl(215, 14%, 25%);
+  --muted-foreground: hsl(222, 20%, 96%);
+
+  --popover: hsl(220, 16%, 16%);
+  --popover-foreground: hsl(222, 20%, 96%);
+
+  --border: hsl(213.33, 11.69%, 30.2%);
+  --input: hsl(213.33, 11.69%, 30.2%);
+
+  --card: hsl(220, 16%, 16%);
+  --card-foreground: hsl(222, 20%, 96%);
+
+  --primary: hsl(222, 20%, 65%);
+  --primary-foreground: hsl(220, 16%, 16%);
+
+  --secondary: hsl(215, 14%, 25%);
+  --secondary-foreground: hsl(222, 20%, 96%);
+
+  --accent: hsl(215, 14%, 25%);
+  --accent-foreground: hsl(222, 20%, 96%);
+
+  --destructive: hsl(0, 80%, 50%);
+  --destructive-foreground: hsl(222, 20%, 96%);
+
+  --ring: hsl(222, 20%, 40%);
+
+  --radius: 0.5rem;
+
+  --beam: hsl(191.03, 100%, 82.94%);
+
+  --sidebar-background: hsl(240 5.9% 10%);
+
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+
+  --sidebar-border: hsl(240 3.7% 15.9%);
+
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }

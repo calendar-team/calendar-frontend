@@ -34,7 +34,7 @@ export default function TasksDetails({ habitId }: { habitId: string }) {
           >
             {" "}
             Due on
-            <ArrowUpDownIcon className="ml-2 h-4 w-4" />
+            <ArrowUpDownIcon className="ml-2 size-4" />
           </Button>
         );
       },
@@ -53,7 +53,7 @@ export default function TasksDetails({ habitId }: { habitId: string }) {
               size="icon"
               onClick={() => changeState(row.original, "Done")}
             >
-              <CheckIcon className="mr-1 h-4 w-4" />
+              <CheckIcon className="mr-1 size-4" />
             </Button>
             <Button
               variant="outline"
@@ -61,7 +61,7 @@ export default function TasksDetails({ habitId }: { habitId: string }) {
               onClick={() => changeState(row.original, "Cancelled")}
               className="ml-2"
             >
-              <XIcon className="mr-1 h-4 w-4" />
+              <XIcon className="mr-1 size-4" />
             </Button>
           </>
         );

@@ -98,7 +98,7 @@ export default function TaskDefinitionDetails({
               <Button
                 size="icon"
                 variant="outline"
-                className="h-8 w-8"
+                className="size-8"
                 onClick={deleteTaskDef}
               >
                 <Trash2Icon size={16} />

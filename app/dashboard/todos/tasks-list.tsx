@@ -38,7 +38,7 @@ export default function TasksList({
   if (isLoading) return <div>loading...</div>;
 
   return (
-    <div className="h-full w-full flex">
+    <div className="size-full flex">
       <div className="w-full">
         <div className="w-full text-center mb-8">
           <h1 className="text-2xl">

@@ -23,13 +23,13 @@ export default function RootLayout({
             </div>
           </div>
         </div>
-        <div className="h-full w-full absolute overflow-hidden -z-20">
+        <div className="size-full absolute overflow-hidden -z-20">
           <SparklesCore
             background="black"
             minSize={0.6}
             maxSize={1.9}
             particleDensity={110}
-            className="w-full h-full"
+            className="size-full"
             particleColor="#14b8a6"
           />
         </div>
