@@ -80,7 +80,7 @@ export default function Page(props: { params: Promise<{ habit_id: string }> }) {
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex w-full h-full justify-center">
+        <div className="flex size-full justify-center">
           <div className="flex flex-col w-[920px]">
             <div className="h-full flex flex-col">
               <div className="grow border rounded-md mt-2 mr-2 mb-2 shadow-md">

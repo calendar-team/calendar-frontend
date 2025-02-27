@@ -54,7 +54,7 @@ export default function Page(props: { params: Promise<{ date: string }> }) {
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex w-full h-full justify-center">
+        <div className="flex size-full justify-center">
           <div className="flex flex-col w-[920px]">
             <TasksList date={date} today={today} />
           </div>

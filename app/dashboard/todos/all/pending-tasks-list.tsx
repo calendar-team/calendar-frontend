@@ -41,7 +41,7 @@ export default function PendignTasksList({ today }: { today: Date }) {
   const values = [...tasksByDate.entries()].sort((a, b) => a[0] - b[0]);
 
   return (
-    <div className="h-full w-full flex mb-8">
+    <div className="size-full flex mb-8">
       <div className="w-full flex flex-col space-y-4">
         {values.map((v, index) => (
           <div className="w-full" key={index}>

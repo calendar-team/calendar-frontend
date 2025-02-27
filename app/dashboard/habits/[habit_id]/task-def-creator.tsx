@@ -290,7 +290,7 @@ export default function TaskDefCreator({
                                   "text-muted-foreground",
                                 )}
                               >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                <CalendarIcon className="mr-2 size-4" />
                                 {field.value.days.from ? (
                                   format(field.value.days.from, "PPP")
                                 ) : (
@@ -365,7 +365,7 @@ export default function TaskDefCreator({
                                     "text-muted-foreground",
                                 )}
                               >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                <CalendarIcon className="mr-2 size-4" />
                                 {field.value.weeks.from ? (
                                   format(field.value.weeks.from, "PPP")
                                 ) : (
@@ -500,7 +500,7 @@ export default function TaskDefCreator({
                                   "text-muted-foreground",
                                 )}
                               >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                <CalendarIcon className="mr-2 size-4" />
                                 {field.value.months.from ? (
                                   format(field.value.months.from, "PPP")
                                 ) : (
@@ -628,7 +628,7 @@ export default function TaskDefCreator({
                                   "text-muted-foreground",
                                 )}
                               >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                <CalendarIcon className="mr-2 size-4" />
                                 {field.value.years.from ? (
                                   format(field.value.years.from, "PPP")
                                 ) : (

@@ -55,7 +55,7 @@ export function NavMain({
                       <div className="flex flex-col justify-center">
                         <HabitState
                           state={subItem.state}
-                          className="mr-2 h-3 w-3 shrink-0"
+                          className="mr-2 size-3 shrink-0"
                         />
                       </div>
                       <span>{subItem.title}</span>
