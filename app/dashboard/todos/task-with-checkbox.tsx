@@ -111,7 +111,7 @@ export default function TaskWithCheckbox({
           rx="2"
           variants={boxVariants}
           initial={false}
-          className="[--done-fill-color:hsl(var(--input))] [--cancelled-fill-color:hsl(var(--input))] [--pending-fill-color:#00000000] group-hover:fill-background"
+          className="[--done-fill-color:var(--input)] [--cancelled-fill-color:var(--input)] [--pending-fill-color:#00000000] group-hover:fill-background"
         />
         <motion.path
           d="M 6.66666 12.6667 L 9.99999 16 L 17.3333 8.66669"
@@ -145,7 +145,7 @@ export default function TaskWithCheckbox({
         />
       </motion.svg>
       <div className="flex grow truncate">
-        <div className="flex truncate relative [--done-label-color:hsl(var(--primary))] [--cancelled-label-color:hsl(var(--primary))] [--pending-label-color:hsl(var(--foreground))]">
+        <div className="flex truncate relative [--done-label-color:var(--primary)] [--cancelled-label-color:var(--primary)] [--pending-label-color:var(--foreground)]">
           <motion.label
             className="flex mx-1 text-2xl"
             variants={labelVariants}
