@@ -194,7 +194,7 @@ export default function AdHocTaskCreator({
             </DialogTrigger>
           </TooltipTrigger>
           <TooltipContent>
-            <p>New habit</p>
+            <p>New task</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
