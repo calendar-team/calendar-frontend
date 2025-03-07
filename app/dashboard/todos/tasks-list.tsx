@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import TaskWithCheckbox from "./task-with-checkbox";
 import FutureTaskWithCheckbox from "./future-task-with-checkbox";
+import AdHocTaskCreator from "./ad-hoc-task-creator";
 
 const fetcher: Fetcher<Task[], [string, string]> = ([url, token]) =>
   fetch(url, { headers: { Authorization: "Bearer " + token } }).then((res) =>
@@ -40,10 +41,15 @@ export default function TasksList({
   return (
     <div className="size-full flex">
       <div className="w-full">
-        <div className="w-full text-center mb-8">
-          <h1 className="text-2xl">
-            {date.getTime() === today.getTime() ? "Today" : format(date, "PP")}
-          </h1>
+        <div className="flex w-full justify-center mb-8">
+          <div className="flex flex-row gap-2 items-center">
+            <h1 className="text-2xl">
+              {date.getTime() === today.getTime()
+                ? "Today"
+                : format(date, "PP")}
+            </h1>
+            <AdHocTaskCreator date={date} onTaskCreatedHandler={mutate} />
+          </div>
         </div>
         <div className="w-full flex flex-col space-y-4">
           {tasks!
@@ -55,7 +61,7 @@ export default function TasksList({
                 <TaskWithCheckbox
                   task={task}
                   key={task.id}
-                  onTaskStateChange={() => mutate()}
+                  onTaskStateChange={mutate}
                 />
               ),
             )}
