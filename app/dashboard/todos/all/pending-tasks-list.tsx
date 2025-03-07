@@ -5,6 +5,7 @@ import { Task, TaskArraySchema } from "@/app/types";
 import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import TaskWithCheckbox from "../task-with-checkbox";
+import AdhocTaskCreator from "../adhoc-task-creator";
 
 const fetcher: Fetcher<Task[], [string, string]> = ([url, token]) =>
   fetch(url, { headers: { Authorization: "Bearer " + token } }).then((res) =>
@@ -45,17 +46,23 @@ export default function PendignTasksList({ today }: { today: Date }) {
       <div className="w-full flex flex-col space-y-4">
         {values.map((v, index) => (
           <div className="w-full" key={index}>
-            <div className="w-full text-center mb-8">
-              <h1 className="text-2xl">
-                {v[0] === today.getTime() ? "Today" : format(v[0], "PP")}
-              </h1>
+            <div className="flex w-full justify-center mb-8">
+              <div className="flex flex-row gap-2 items-center">
+                <h1 className="text-2xl">
+                  {v[0] === today.getTime() ? "Today" : format(v[0], "PP")}
+                </h1>
+                <AdhocTaskCreator
+                  date={new Date(v[0])}
+                  onTaskCreatedHandler={mutate}
+                />
+              </div>
             </div>
             <div className="w-full flex flex-col space-y-4">
               {v[1].map((task: Task) => (
                 <TaskWithCheckbox
                   task={task}
                   key={task.id}
-                  onTaskStateChange={() => mutate()}
+                  onTaskStateChange={mutate}
                   pauseAfter={1000}
                 />
               ))}

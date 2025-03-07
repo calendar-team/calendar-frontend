@@ -49,7 +49,7 @@ export function NavMain({
           {item.items?.length ? (
             <SidebarMenuSub>
               {item.items?.map((subItem) => (
-                <SidebarMenuSubItem key={subItem.title}>
+                <SidebarMenuSubItem key={subItem.url}>
                   <SidebarMenuSubButton asChild isActive={subItem.isActive}>
                     <Link href={subItem.url}>
                       <div className="flex flex-col justify-center">
