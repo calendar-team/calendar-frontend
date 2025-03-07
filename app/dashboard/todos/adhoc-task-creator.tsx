@@ -139,8 +139,7 @@ export default function AdhocTaskCreator({
     })();
 
     fetch(
-      process.env.NEXT_PUBLIC_CALENDAR_BACKEND_URL +
-        "/habit/default/tasks_defs",
+      process.env.NEXT_PUBLIC_CALENDAR_BACKEND_URL + "/habit/adhoc/tasks_defs",
       {
         method: "POST",
         headers: {
