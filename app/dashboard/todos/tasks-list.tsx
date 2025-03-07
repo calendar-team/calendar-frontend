@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import TaskWithCheckbox from "./task-with-checkbox";
 import FutureTaskWithCheckbox from "./future-task-with-checkbox";
-import AdhocTaskCreator from "./adhoc-task-creator";
+import AdHocTaskCreator from "./ad-hoc-task-creator";
 
 const fetcher: Fetcher<Task[], [string, string]> = ([url, token]) =>
   fetch(url, { headers: { Authorization: "Bearer " + token } }).then((res) =>
@@ -48,7 +48,7 @@ export default function TasksList({
                 ? "Today"
                 : format(date, "PP")}
             </h1>
-            <AdhocTaskCreator date={date} onTaskCreatedHandler={mutate} />
+            <AdHocTaskCreator date={date} onTaskCreatedHandler={mutate} />
           </div>
         </div>
         <div className="w-full flex flex-col space-y-4">

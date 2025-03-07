@@ -5,7 +5,7 @@ import { Task, TaskArraySchema } from "@/app/types";
 import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import TaskWithCheckbox from "../task-with-checkbox";
-import AdhocTaskCreator from "../adhoc-task-creator";
+import AdHocTaskCreator from "../ad-hoc-task-creator";
 
 const fetcher: Fetcher<Task[], [string, string]> = ([url, token]) =>
   fetch(url, { headers: { Authorization: "Bearer " + token } }).then((res) =>
@@ -51,7 +51,7 @@ export default function PendignTasksList({ today }: { today: Date }) {
                 <h1 className="text-2xl">
                   {v[0] === today.getTime() ? "Today" : format(v[0], "PP")}
                 </h1>
-                <AdhocTaskCreator
+                <AdHocTaskCreator
                   date={new Date(v[0])}
                   onTaskCreatedHandler={mutate}
                 />

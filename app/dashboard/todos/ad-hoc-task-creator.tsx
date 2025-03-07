@@ -55,7 +55,7 @@ import { z } from "zod";
 
 const monthDays = Array.from({ length: 31 }, (_, i) => i + 1);
 
-export default function AdhocTaskCreator({
+export default function AdHocTaskCreator({
   date,
   onTaskCreatedHandler,
 }: {
@@ -139,7 +139,7 @@ export default function AdhocTaskCreator({
     })();
 
     fetch(
-      process.env.NEXT_PUBLIC_CALENDAR_BACKEND_URL + "/habit/adhoc/tasks_defs",
+      process.env.NEXT_PUBLIC_CALENDAR_BACKEND_URL + "/habit/ad-hoc/tasks_defs",
       {
         method: "POST",
         headers: {
