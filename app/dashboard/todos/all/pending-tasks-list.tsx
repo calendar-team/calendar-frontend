@@ -57,7 +57,7 @@ export default function PendignTasksList({ today }: { today: Date }) {
                 />
               </div>
             </div>
-            <div className="w-full flex flex-col space-y-4">
+            <div className="w-full flex flex-col space-y-8">
               {v[1].map((task: Task) => (
                 <TaskWithCheckbox
                   task={task}

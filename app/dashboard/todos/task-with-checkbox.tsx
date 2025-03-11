@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { EmptyFunction, Task } from "../../types";
 import { useSession } from "next-auth/react";
-import { CircleX, EllipsisVertical } from "lucide-react";
+import { EllipsisVertical, SquareCheck, SquareX } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +13,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { format } from "date-fns";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { HoverCardArrow } from "@radix-ui/react-hover-card";
+import { cn } from "@/lib/utils";
 
 const tickVariants = {
   pressed: (taskState: "Done" | "Cancelled" | "Pending") => ({
@@ -81,69 +88,94 @@ export default function TaskWithCheckbox({
       href={`/dashboard/todos/${format(task.due_on, "dd-MM-yyyy")}/tasks/${task.id}`}
       className="flex flex-row w-full border rounded-md p-2 hover:bg-secondary hover:cursor-pointer"
     >
-      <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="30"
-        height="30"
-        viewBox="0 0 24 24"
-        fill="transparent"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="group cursor-pointer w-[30px]"
-        onClick={(e) => {
-          const newState = taskState === "Pending" ? "Done" : "Pending";
-          setTaskState(newState);
-          changeState(task, newState);
-          e.preventDefault();
-        }}
-        initial={false}
-        animate={taskState}
-        whileHover="hover"
-        whileTap="pressed"
-      >
-        <motion.rect
-          width="18"
-          height="18"
-          x="3"
-          y="3"
-          rx="2"
-          variants={boxVariants}
-          initial={false}
-          className="[--done-fill-color:var(--input)] [--cancelled-fill-color:var(--input)] [--pending-fill-color:#00000000] group-hover:fill-background"
-        />
-        <motion.path
-          d="M 6.66666 12.6667 L 9.99999 16 L 17.3333 8.66669"
-          className="fill-transparent [--done-tick-color:#22c55e] [--pending-tick-color:#00000000] [--cancelled-tick-color:#00000000] stroke-[2px]"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          variants={tickVariants}
-          style={{ pathLength, opacity }}
-          custom={taskState}
-          initial={false}
-        />
-        <motion.path
-          d="M 8 8 L 16 16"
-          className="fill-transparent [--done-tick-color:#00000000] [--pending-tick-color:#00000000] [--cancelled-tick-color:#ef4444] stroke-[2px]"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          variants={tickVariants}
-          style={{ pathLength, opacity }}
-          custom={taskState}
-          initial={false}
-        />
-        <motion.path
-          d="M 8 16 L 16 8"
-          className="fill-transparent [--done-tick-color:#00000000] [--pending-tick-color:#00000000] [--cancelled-tick-color:#ef4444] stroke-[2px]"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          variants={tickVariants}
-          style={{ pathLength, opacity }}
-          custom={taskState}
-          initial={false}
-        />
-      </motion.svg>
+      <HoverCard openDelay={1000}>
+        <HoverCardTrigger asChild>
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="transparent"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="group cursor-pointer w-[30px]"
+            onClick={(e) => {
+              const newState = taskState === "Pending" ? "Done" : "Pending";
+              setTaskState(newState);
+              changeState(task, newState);
+              e.preventDefault();
+            }}
+            initial={false}
+            animate={taskState}
+            whileHover="hover"
+            whileTap="pressed"
+          >
+            <motion.rect
+              width="18"
+              height="18"
+              x="3"
+              y="3"
+              rx="2"
+              variants={boxVariants}
+              initial={false}
+              className="[--done-fill-color:var(--input)] [--cancelled-fill-color:var(--input)] [--pending-fill-color:#00000000] group-hover:fill-background"
+            />
+            <motion.path
+              d="M 6.66666 12.6667 L 9.99999 16 L 17.3333 8.66669"
+              className="fill-transparent [--done-tick-color:#22c55e] [--pending-tick-color:#00000000] [--cancelled-tick-color:#00000000] stroke-[2px]"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              variants={tickVariants}
+              style={{ pathLength, opacity }}
+              custom={taskState}
+              initial={false}
+            />
+            <motion.path
+              d="M 8 8 L 16 16"
+              className="fill-transparent [--done-tick-color:#00000000] [--pending-tick-color:#00000000] [--cancelled-tick-color:#ef4444] stroke-[2px]"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              variants={tickVariants}
+              style={{ pathLength, opacity }}
+              custom={taskState}
+              initial={false}
+            />
+            <motion.path
+              d="M 8 16 L 16 8"
+              className="fill-transparent [--done-tick-color:#00000000] [--pending-tick-color:#00000000] [--cancelled-tick-color:#ef4444] stroke-[2px]"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              variants={tickVariants}
+              style={{ pathLength, opacity }}
+              custom={taskState}
+              initial={false}
+            />
+          </motion.svg>
+        </HoverCardTrigger>
+        <HoverCardContent side="top" className="p-1 flex flex-row shrink w-15">
+          <HoverCardArrow />
+          <SquareCheck
+            size={32}
+            onClick={(e) => {
+              e.preventDefault();
+              setTaskState("Done");
+              changeState(task, "Done");
+            }}
+            className={cn("", taskState === "Done" && "stroke-[#22c55e]")}
+          />
+          <SquareX
+            size={32}
+            onClick={(e) => {
+              e.preventDefault();
+              setTaskState("Cancelled");
+              changeState(task, "Cancelled");
+            }}
+            className={cn("", taskState === "Cancelled" && "stroke-[#ef4444]")}
+          />
+        </HoverCardContent>
+      </HoverCard>
       <div className="flex grow truncate">
         <div className="flex truncate relative [--done-label-color:var(--primary)] [--cancelled-label-color:var(--primary)] [--pending-label-color:var(--foreground)]">
           <motion.label
@@ -185,7 +217,7 @@ export default function TaskWithCheckbox({
                 changeState(task, "Cancelled");
               }}
             >
-              <CircleX />
+              <SquareX />
               Cancel
             </DropdownMenuItem>
           </DropdownMenuContent>

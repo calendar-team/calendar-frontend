@@ -51,7 +51,7 @@ export default function TasksList({
             <AdHocTaskCreator date={date} onTaskCreatedHandler={mutate} />
           </div>
         </div>
-        <div className="w-full flex flex-col space-y-4">
+        <div className="w-full flex flex-col space-y-8">
           {tasks!
             .filter((task: Task) => task.due_on.getTime() === date.getTime())
             .map((task: Task) =>
