@@ -154,26 +154,47 @@ export default function TaskWithCheckbox({
             />
           </motion.svg>
         </HoverCardTrigger>
-        <HoverCardContent side="top" className="p-1 flex flex-row shrink w-15">
+        <HoverCardContent
+          side="top"
+          className="p-0 w-auto"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           <HoverCardArrow />
-          <SquareCheck
-            size={32}
-            onClick={(e) => {
-              e.preventDefault();
-              setTaskState("Done");
-              changeState(task, "Done");
-            }}
-            className={cn("", taskState === "Done" && "stroke-[#22c55e]")}
-          />
-          <SquareX
-            size={32}
-            onClick={(e) => {
-              e.preventDefault();
-              setTaskState("Cancelled");
-              changeState(task, "Cancelled");
-            }}
-            className={cn("", taskState === "Cancelled" && "stroke-[#ef4444]")}
-          />
+          <div className="p-0.5 flex flex-row">
+            <div
+              className="p-0.5 rounded-xl hover:bg-secondary"
+              onClick={() => {
+                const newState = taskState === "Done" ? "Pending" : "Done";
+                setTaskState(newState);
+                changeState(task, newState);
+              }}
+            >
+              <SquareCheck
+                size={32}
+                className={cn("", taskState === "Done" && "stroke-[#22c55e]")}
+              />
+            </div>
+
+            <div
+              className="p-0.5 rounded-xl hover:bg-secondary"
+              onClick={() => {
+                const newState =
+                  taskState === "Cancelled" ? "Pending" : "Cancelled";
+                setTaskState(newState);
+                changeState(task, newState);
+              }}
+            >
+              <SquareX
+                size={32}
+                className={cn(
+                  "",
+                  taskState === "Cancelled" && "stroke-[#ef4444]",
+                )}
+              />
+            </div>
+          </div>
         </HoverCardContent>
       </HoverCard>
       <div className="flex grow truncate">
