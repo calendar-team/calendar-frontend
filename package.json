@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4.0.14",
+    "@tailwindcss/postcss": "^4.0.15",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/jest": "^29.5.14",
@@ -70,7 +70,7 @@
     "next-themes": "^0.4.6",
     "react": "19.0.0",
     "react-calendar-heatmap": "^1.10.0",
-    "react-day-picker": "^9.6.2",
+    "react-day-picker": "^9.6.3",
     "react-dom": "19.0.0",
     "react-hook-form": "^7.54.2",
     "react-tooltip": "^5.28.0",
