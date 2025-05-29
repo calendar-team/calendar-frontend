@@ -13,11 +13,11 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4.1.7",
+    "@tailwindcss/postcss": "^4.1.8",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "22.15.23",
+    "@types/node": "22.15.24",
     "@types/react": "19.0.8",
     "@types/react-calendar-heatmap": "^1.9.0",
     "husky": "^9.1.7",
@@ -78,7 +78,7 @@
     "swr": "^2.3.3",
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.25.30"
+    "zod": "^3.25.33"
   },
   "overrides": {
     "@types/react": "19.0.8"
