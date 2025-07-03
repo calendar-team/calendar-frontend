@@ -17,7 +17,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "24.0.6",
+    "@types/node": "24.0.10",
     "@types/react": "19.0.8",
     "@types/react-calendar-heatmap": "^1.9.0",
     "husky": "^9.1.7",
@@ -61,7 +61,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "framer-motion": "^12.19.2",
+    "framer-motion": "^12.23.0",
     "js-base64": "^3.7.7",
     "lexical": "^0.32.0",
     "lucide-react": "^0.525.0",
@@ -72,13 +72,13 @@
     "react-calendar-heatmap": "^1.10.0",
     "react-day-picker": "^9.7.0",
     "react-dom": "19.1.0",
-    "react-hook-form": "^7.58.1",
+    "react-hook-form": "^7.59.0",
     "react-tooltip": "^5.29.1",
     "sonner": "^2.0.5",
-    "swr": "^2.3.3",
+    "swr": "^2.3.4",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.25.67"
+    "zod": "^3.25.69"
   },
   "overrides": {
     "@types/react": "19.0.8"
