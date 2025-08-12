@@ -39,7 +39,7 @@ jobs:
           k8s-secret: ${{ secrets.K8S_SECRET }}
 
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Create calendar-frontend namespace
         uses: azure/k8s-deploy@v5
