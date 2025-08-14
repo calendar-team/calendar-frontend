@@ -47,15 +47,15 @@ export const WeekDaysValues: WeekDays[] = [
 ];
 
 const DaysRecurrenceSchema = z.object({
-  every: z.coerce.number().int().positive(),
-  from: z.coerce.date(),
+  every: z.coerce.number().int().positive() as z.ZodNumber,
+  from: z.coerce.date() as z.ZodDate,
 });
 
 export type DaysRecurrence = z.infer<typeof DaysRecurrenceSchema>;
 
 const WeeksRecurrenceSchema = z.object({
-  every: z.coerce.number().int().positive(),
-  from: z.coerce.date(),
+  every: z.coerce.number().int().positive() as z.ZodNumber,
+  from: z.coerce.date() as z.ZodDate,
   on: z.object({
     days: z.array(WeekDaysSchema),
   }),
@@ -64,18 +64,18 @@ const WeeksRecurrenceSchema = z.object({
 export type WeeksRecurrence = z.infer<typeof WeeksRecurrenceSchema>;
 
 const MonthsRecurrenceSchema = z.object({
-  every: z.coerce.number().int().positive(),
-  from: z.coerce.date(),
+  every: z.coerce.number().int().positive() as z.ZodNumber,
+  from: z.coerce.date() as z.ZodDate,
   on: z.object({
-    days: z.array(z.coerce.number().int().min(1).max(31)),
+    days: z.array(z.coerce.number().int().min(1).max(31) as z.ZodNumber),
   }),
 });
 
 export type MonthsRecurrence = z.infer<typeof WeeksRecurrenceSchema>;
 
 const YearsRecurrenceSchema = z.object({
-  every: z.coerce.number().int().positive(),
-  from: z.coerce.date(),
+  every: z.coerce.number().int().positive() as z.ZodNumber,
+  from: z.coerce.date() as z.ZodDate,
 });
 
 export type YearsRecurrence = z.infer<typeof WeeksRecurrenceSchema>;
@@ -92,8 +92,8 @@ export type Recurrence = z.infer<typeof RecurrenceSchema>;
 
 const RecurrenceApiSchema = z.object({
   rec_type: RecurrenceTypeSchema,
-  every: z.number().int().positive(),
-  from: z.coerce.date(),
+  every: z.number().int().positive() as z.ZodNumber,
+  from: z.coerce.date() as z.ZodDate,
   on_week_days: z.optional(
     z.nullable(
       z.object({
@@ -117,7 +117,9 @@ const EndsSchema = z.union([
   z.object({ type: z.literal(EndVariants.Never) }),
   z.object({
     type: z.literal(EndVariants.After),
-    value: z.object({ after: z.coerce.number().int().positive() }),
+    value: z.object({
+      after: z.coerce.number().int().positive() as z.ZodNumber,
+    }),
   }),
 ]);
 
@@ -150,8 +152,8 @@ export const TaskSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   state: z.enum(["Pending", "Done", "Cancelled"]),
-  due_on: z.coerce.date(),
-  done_on: z.coerce.date(),
+  due_on: z.coerce.date() as z.ZodDate,
+  done_on: z.coerce.date() as z.ZodDate,
   is_future: z.boolean(),
 });
 
