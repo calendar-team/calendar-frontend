@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -18,7 +18,7 @@
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
     "@types/node": "24.7.0",
-    "@types/react": "19.0.8",
+    "@types/react": "19.2.2",
     "@types/react-calendar-heatmap": "^1.9.0",
     "husky": "^9.1.7",
     "jest": "^30.2.0",
@@ -65,7 +65,7 @@
     "js-base64": "^3.7.8",
     "lexical": "^0.35.0",
     "lucide-react": "^0.545.0",
-    "next": "15.5.4",
+    "next": "16.0.1",
     "next-auth": "^4.24.12",
     "next-themes": "^0.4.6",
     "react": "19.2.0",
@@ -81,6 +81,6 @@
     "zod": "^4.1.12"
   },
   "overrides": {
-    "@types/react": "19.0.8"
+    "@types/react": "19.2.2"
   }
 }
