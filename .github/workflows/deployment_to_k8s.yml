@@ -48,7 +48,7 @@ jobs:
             k8s/namespace.yaml
 
       - name: Create container-registry secret
-        uses: azure/k8s-create-secret@v5
+        uses: azure/k8s-create-secret@v6
         with:
           namespace: calendar-frontend
           secret-name: ghcr-secret
@@ -57,7 +57,7 @@ jobs:
           container-registry-password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
 
       - name: Create nextauth secret key
-        uses: azure/k8s-create-secret@v5
+        uses: azure/k8s-create-secret@v6
         with:
           namespace: calendar-frontend
           secret-name: nextauth-secret
