@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Create calendar-frontend namespace
-        uses: azure/k8s-deploy@v6
+        uses: azure/k8s-deploy@v7
         with:
           manifests: |
             k8s/namespace.yaml
@@ -65,7 +65,7 @@ jobs:
           string-data: ${{ secrets.NEXTAUTH_SECRET }}
 
       - name: Deploy to the K8S cluster
-        uses: azure/k8s-deploy@v6
+        uses: azure/k8s-deploy@v7
         with:
           namespace: calendar-frontend
           manifests: |
