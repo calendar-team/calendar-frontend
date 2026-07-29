@@ -1,6 +1,6 @@
 import { Providers } from "@/app/providers";
 import ThemeSwitcher from "../theme-switcher";
-import { SparklesCore } from "components/ui/sparkles";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 export default function RootLayout({
   children,
