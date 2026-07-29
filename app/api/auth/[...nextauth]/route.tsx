@@ -66,8 +66,7 @@ const handler = NextAuth({
       },
       async authorize(
         credentials:
-          | Record<"username" | "password" | "timeZone", string>
-          | undefined,
+          Record<"username" | "password" | "timeZone", string> | undefined,
       ): Promise<User | null> {
         if (credentials === undefined) {
           return new Promise((resolve) => {
