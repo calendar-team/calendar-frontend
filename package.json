@@ -61,7 +61,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.4.0",
-    "framer-motion": "^12.43.0",
+    "framer-motion": "^13.0.0",
     "js-base64": "^3.9.2",
     "lexical": "^0.49.0",
     "lucide-react": "^1.30.0",
